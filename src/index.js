@@ -1,4 +1,4 @@
-import Word from './word.js';
+import Line from './line';
 let ctx = document.getElementById('canvas'),
     content = ctx.getContext('2d'),
     WIDTH = document.documentElement.clientWidth,
@@ -6,6 +6,16 @@ let ctx = document.getElementById('canvas'),
 
     ctx.width = WIDTH;
     ctx.height = HEIGHT;
+let maxLineNumber = Math.ceil(WIDTH / 40);
+let lines = [];
 
-let wordTest = new Word();
-console.log(wordTest);
+for (let i = 0; i < maxLineNumber; i++) {
+    lines.push(new Line(1, content, 40 * i, HEIGHT, WIDTH));
+}
+
+setInterval(() => {
+    content.clearRect(0, 0, WIDTH, HEIGHT);
+    lines.forEach(line => {
+        line.draw();
+    })
+}, 300);

@@ -1,6 +1,7 @@
 export default class Word {
-  constructor (level, x, y) {
+  constructor (level, x, y, content) {
     this.level = level;
+    this.content = content;
     this.position = {
       x,y
     }
@@ -15,10 +16,10 @@ export default class Word {
   }
 
   draw () {
-    ctx.fillStyle = "green";
-    ctx.font = "bold 40px";
-    ctx.textBaseLine = 'middle';
-    ctx.fillText(this.word, this.position.x, this.position.y);
+    this.content.fillStyle = "#006621";
+    this.content.font = "40px serif";
+    this.content.textBaseLine = 'middle';
+    this.content.fillText(this.word, this.position.x, this.position.y);
   }
 
   move (targetX, targetY) {
